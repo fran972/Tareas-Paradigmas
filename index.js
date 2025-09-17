@@ -22,7 +22,12 @@ do {
         }
         break;
       case '2':
-        // Acción para opción 2
+        if(tareas.length === 0) {
+          console.log("no hay tareas creadas");
+          break;
+        }else{
+          BuscarTarea(tareas);
+        }
         break;
       case '3':
         const nuevaTarea = CrearTarea(tareas);

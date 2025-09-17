@@ -12,6 +12,7 @@ export default function CrearTarea(tareas) {
   } while (!titulo);
 
   const descripcion = prompt("Ingrese la descripción de la tarea: ");
+  let estado = 1; // 1: pendiente, 2: en curso, 3: terminado, 4: cancelado
   let dificultad = prompt("Ingrese la dificultad (1: fácil, 2: medio, 3: difícil): ");
   if (isNaN(dificultad) || dificultad < 1 || dificultad > 3) {
     console.log("Dificultad no válida, se asigna 1 (fácil) por defecto.");
@@ -29,5 +30,5 @@ export default function CrearTarea(tareas) {
   }
   let fechaCreacion = new Date();
 
-  return { titulo, descripcion, dificultad, vencimiento, fechaCreacion };
+  return { titulo, descripcion,estado, dificultad, vencimiento, fechaCreacion };
 }

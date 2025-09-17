@@ -26,7 +26,23 @@ function VerDetalle(tareas){
             console.log("Esta es la tarea que elegiste:\n");
             console.log(`Título: ${tarea.titulo}\n`);
             console.log(`Descripción: ${tarea.descripcion}\n`);
+            if(tarea.estado == 1){
+                tarea.estado = "pendiente";
+            } else if(tarea.estado == 2){
+                tarea.estado = "en curso";
+            } else if(tarea.estado == 3){
+                tarea.estado = "terminado";
+            } else if(tarea.estado == 4){
+                tarea.estado = "cancelado";
+            }
             console.log(`Estado: ${tarea.estado}`);
+            if(tarea.dificultad ==1){
+                tarea.dificultad = "fácil";
+            }else if(tarea.dificultad == 2){
+                tarea.dificultad = "medio";
+            }else if(tarea.dificultad == 3){
+                tarea.dificultad = "difícil";
+            }
             console.log(`Dificultad: ${tarea.dificultad}`);
             console.log(`Vencimiento: ${tarea.vencimiento}\n`);
             console.log(`Creacion: ${tarea.creacion}`);
@@ -92,10 +108,37 @@ function EditarTarea(tareas, indice){
                 }
             }
        }
-   }
+}
 
-   
+function VerPendientes(tareas){
+    console.log("Mostrando tareas pendientes:");
+    for(let i=0;i<tareas.length;i++){
+        if(tareas[i].estado == 1){
+            const tarea = tareas[i];
+            console.log(`[${i + 1}] ${tarea.titulo}`);
+        }
+    }
+}
 
+function VerEnCurso(tareas){
+    console.log("mostrando tareas en curso:");
+    for(let i=0; i<tareas.length;i++){
+        if(tareas[i].estado == 2){
+            const tarea = tareas[i];
+            console.log(`[${i + 1}] ${tarea.titulo}`);
+        }
+    }
+}
+
+function VerTerminadas(tareas){
+    console.log("mostrando tareas terminadas:");        
+    for(let i=0; i<tareas.length;i++){
+        if(tareas[i].estado == 3){
+            const tarea = tareas[i];
+            console.log(`[${i + 1}] ${tarea.titulo}`);
+        }
+    }
+}
 
     
     
@@ -117,13 +160,13 @@ export default function VerTareas(tareas) {
                 mostrarTodasLasTareas(tareas);
                 break;
             case '2':
-                console.log("Mostrando tareas pendientes...");
+                VerPendientes(tareas);
                 break;
             case '3':
-                console.log("Mostrando tareas en curso...");
+                VerEnCurso(tareas);
                 break;
             case '4':
-                console.log("Mostrando tareas terminadas...");
+                VerTerminadas(tareas);
                 break;
             case '0':
                 console.log("Volviendo al menú principal...");
